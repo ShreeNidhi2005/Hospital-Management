@@ -23,7 +23,7 @@ const NewPatientAppointment = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:8080/api/appointments/new', formData);
+      await axios.post('http://localhost:8080/api/appointments/new', formData);
       setMessage('Appointment booked successfully!');
       setFormData({
         name: '',

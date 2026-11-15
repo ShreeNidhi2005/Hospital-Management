@@ -16,7 +16,7 @@ import AppointmentListPage from './component/Appointments/AppointmentListPage';
 import PatientAppointmentForm from './component/Appointments/PatientAppointmentForm';
 import AdminForgotPassword from './component/login/AdminForgotPassword';
 import PatientReviewPage from './component/Appointments/PatientReviewPage';
-import adminLoginImage from './component/image/adminlogin.jpg';
+
 
 
 

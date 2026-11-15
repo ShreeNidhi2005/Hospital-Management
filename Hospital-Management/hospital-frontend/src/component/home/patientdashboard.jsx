@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CgProfile } from "react-icons/cg";
 import axios from 'axios';
@@ -16,33 +16,63 @@ function PatientDashboard() {
   const username = localStorage.getItem('username');
 
   // Fetch profile data
-  const fetchProfile = () => {
-    axios
-      .get(`http://localhost:8080/hosp/profile?username=${username}`)
-      .then((res) => setProfileData(res.data))
-      .catch(console.error);
-  };
+const fetchProfile = useCallback(() => {
+  axios
+    .get(`http://localhost:8080/hosp/profile?username=${username}`)
+    .then((res) => setProfileData(res.data))
+    .catch(console.error);
+}, [username]);
+
+// Fetch appointment data
+const fetchAppointments = useCallback(() => {
+  axios
+    .get(`http://localhost:8080/appointments/by-patient?patientName=${username}`)
+    .then((res) => setAppointments(res.data))
+    .catch((error) => {
+      console.error('Error fetching appointments:', error);
+      setAppointments([]);
+    });
+}, [username]);
+
+useEffect(() => {
+  if (!username) {
+    navigate('/patientlogin');
+    return;
+  }
+
+  fetchProfile();
+  fetchAppointments();
+
+}, [username, navigate, fetchProfile, fetchAppointments]);
+
+  // Fetch profile data
+  // const fetchProfile = () => {
+  //   axios
+  //     .get(`http://localhost:8080/hosp/profile?username=${username}`)
+  //     .then((res) => setProfileData(res.data))
+  //     .catch(console.error);
+  // };
 
   // Fetch appointment data
-  const fetchAppointments = () => {
-    axios
-      .get(`http://localhost:8080/appointments/by-patient?patientName=${username}`)
-      .then((res) => setAppointments(res.data))
-      .catch((error) => {
-        console.error('Error fetching appointments:', error);
-        setAppointments([]);
-      });
-  };
+  // const fetchAppointments = () => {
+  //   axios
+  //     .get(`http://localhost:8080/appointments/by-patient?patientName=${username}`)
+  //     .then((res) => setAppointments(res.data))
+  //     .catch((error) => {
+  //       console.error('Error fetching appointments:', error);
+  //       setAppointments([]);
+  //     });
+  // };
 
-  useEffect(() => {
-    if (!username) {
-      navigate('/patientlogin');
-      return;
-    }
+  // useEffect(() => {
+  //   if (!username) {
+  //     navigate('/patientlogin');
+  //     return;
+  //   }
 
-    fetchProfile();
-    fetchAppointments();
-  }, [username, navigate]);
+  //   fetchProfile();
+  //   fetchAppointments();
+  // }, [username, navigate]);
 
   const handleBookAppointment = () => setShowAppointmentOptions(true);
   const handleNewPatient = () => navigate('/PatientAppointmentForm');
