@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.loginapp.model.Review;
 import com.example.loginapp.service.ReviewService;
 
-@CrossOrigin(origins = "http://localhost:3000" , "https://hospital-management-26yikv8ui-shreenidhi-projects.vercel.app")
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/appointments/{appointmentId}/reviews")
 public class ReviewController {

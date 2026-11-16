@@ -13,7 +13,7 @@ import com.example.loginapp.service.HospService;
 
 @RestController
 @RequestMapping("/hosp")
-@CrossOrigin(origins = "http://localhost:3000" ,  "https://hospital-management-26yikv8ui-shreenidhi-projects.vercel.app")
+@CrossOrigin(origins = "http://localhost:3000")
 public class HospController {
 
 	@Autowired

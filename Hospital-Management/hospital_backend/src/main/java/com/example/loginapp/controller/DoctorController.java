@@ -18,7 +18,7 @@ import com.example.loginapp.service.DoctorService;
 
 @RestController
 @RequestMapping("/doctor")
-@CrossOrigin(origins = "http://localhost:3000" ,  "https://hospital-management-26yikv8ui-shreenidhi-projects.vercel.app")
+@CrossOrigin(origins = "http://localhost:3000")
 public class DoctorController {
 	@Autowired
 	private DoctorService doctorService;
