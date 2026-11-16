@@ -18,10 +18,8 @@ public class CorsConfig {
 
                 registry.addMapping("/**")
                     .allowedOrigins(
-    "https://hospital-management-kw6a48an6-shreenidhi-projects.vercel.app",
-    "https://hospital-management-4lwxzdffx-shreenidhi-projects.vercel.app",
-    "https://hospital-management-aifo2b9fo-shreenidhi-projects.vercel.app"
-)
+                        "https://hospital-management-seven-pied.vercel.app"
+                    )
                     .allowedMethods(
                         "GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"
                     )
