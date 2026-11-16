@@ -15,7 +15,7 @@ const PatientLogin = () => {
       // Format DOB to yyyy-MM-dd
       const formattedDob = new Date(dob).toISOString().split('T')[0];
 
-      const response = await axios.post('http://localhost:8080/hosp/login', {
+      const response = await axios.post('https://hospital-management-backend-a52a.onrender.com/hosp/login', {
         username,
         dob: formattedDob,
       });

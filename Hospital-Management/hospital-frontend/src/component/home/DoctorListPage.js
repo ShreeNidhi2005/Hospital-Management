@@ -16,7 +16,7 @@ const DoctorListPage = () => {
 
   const fetchDoctors = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/doctor/all');
+      const response = await axios.get('https://hospital-management-backend-a52a.onrender.com/doctor/all');
       setDoctors(response.data);
     } catch (error) {
       console.error('Error fetching doctor list:', error);
@@ -25,7 +25,7 @@ const DoctorListPage = () => {
 
   const handleDeleteDoctor = async (id) => {
     try {
-      await axios.delete(`http://localhost:8080/doctor/delete/${id}`);
+      await axios.delete(`https://hospital-management-backend-a52a.onrender.com/doctor/delete/${id}`);
       fetchDoctors();
     } catch (error) {
       console.error('Error deleting doctor:', error);

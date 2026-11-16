@@ -18,7 +18,7 @@ function PatientDashboard() {
   // Fetch profile data
 const fetchProfile = useCallback(() => {
   axios
-    .get(`http://localhost:8080/hosp/profile?username=${username}`)
+    .get(`https://hospital-management-backend-a52a.onrender.com/hosp/profile?username=${username}`)
     .then((res) => setProfileData(res.data))
     .catch(console.error);
 }, [username]);
@@ -26,7 +26,7 @@ const fetchProfile = useCallback(() => {
 // Fetch appointment data
 const fetchAppointments = useCallback(() => {
   axios
-    .get(`http://localhost:8080/appointments/by-patient?patientName=${username}`)
+    .get(`https://hospital-management-backend-a52a.onrender.com/appointments/by-patient?patientName=${username}`)
     .then((res) => setAppointments(res.data))
     .catch((error) => {
       console.error('Error fetching appointments:', error);
@@ -48,7 +48,7 @@ useEffect(() => {
   // Fetch profile data
   // const fetchProfile = () => {
   //   axios
-  //     .get(`http://localhost:8080/hosp/profile?username=${username}`)
+  //     .get(`https://hospital-management-backend-a52a.onrender.com/hosp/profile?username=${username}`)
   //     .then((res) => setProfileData(res.data))
   //     .catch(console.error);
   // };
@@ -56,7 +56,7 @@ useEffect(() => {
   // Fetch appointment data
   // const fetchAppointments = () => {
   //   axios
-  //     .get(`http://localhost:8080/appointments/by-patient?patientName=${username}`)
+  //     .get(`https://hospital-management-backend-a52a.onrender.com/appointments/by-patient?patientName=${username}`)
   //     .then((res) => setAppointments(res.data))
   //     .catch((error) => {
   //       console.error('Error fetching appointments:', error);

@@ -21,7 +21,7 @@ const AppointmentListPage = () => {
 
   const fetchAppointments = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/appointments/all');
+      const response = await axios.get('https://hospital-management-backend-a52a.onrender.com/appointments/all');
       setAppointments(Array.isArray(response.data) ? response.data : []);
       setCurrentPage(1);
     } catch (error) {
@@ -40,8 +40,8 @@ const AppointmentListPage = () => {
 
     try {
       const response = isNumeric
-        ? await axios.get(`http://localhost:8080/appointments/${searchTerm}`)
-        : await axios.get(`http://localhost:8080/appointments/by-patient?patientName=${searchTerm}`);
+        ? await axios.get(`https://hospital-management-backend-a52a.onrender.com/appointments/${searchTerm}`)
+        : await axios.get(`https://hospital-management-backend-a52a.onrender.com/appointments/by-patient?patientName=${searchTerm}`);
 
       const results = isNumeric ? [response.data] : response.data;
       setAppointments(results);
@@ -58,7 +58,7 @@ const AppointmentListPage = () => {
       const appointment = appointments.find(a => a.id === parseInt(updateId));
       if (!appointment) return alert('Appointment not found. Please search it first.');
 
-      await axios.put(`http://localhost:8080/appointments/${updateId}`, {
+      await axios.put(`https://hospital-management-backend-a52a.onrender.com/appointments/${updateId}`, {
         ...appointment,
         appointmentDate: updateDate,
         appointmentTime: updateTime
@@ -74,7 +74,7 @@ const AppointmentListPage = () => {
   const handleDelete = async () => {
     if (!deleteId) return alert('Enter ID to delete');
     try {
-      await axios.delete(`http://localhost:8080/appointments/${deleteId}`);
+      await axios.delete(`https://hospital-management-backend-a52a.onrender.com/appointments/${deleteId}`);
       alert('Appointment deleted');
       fetchAppointments();
     } catch (error) {
@@ -84,7 +84,7 @@ const AppointmentListPage = () => {
 
   const handleMarkVisited = async (id) => {
     try {
-      await axios.patch(`http://localhost:8080/appointments/${id}/visited?visited=true`);
+      await axios.patch(`https://hospital-management-backend-a52a.onrender.com/appointments/${id}/visited?visited=true`);
       fetchAppointments();
     } catch (error) {
       console.error('Error marking visited:', error);
@@ -94,7 +94,7 @@ const AppointmentListPage = () => {
 
   const handleApprove = async (id) => {
     try {
-      await axios.patch(`http://localhost:8080/appointments/${id}/status?status=APPROVED`);
+      await axios.patch(`https://hospital-management-backend-a52a.onrender.com/appointments/${id}/status?status=APPROVED`);
       fetchAppointments();
     } catch (error) {
       console.error('Error approving appointment:', error);
@@ -105,7 +105,7 @@ const AppointmentListPage = () => {
     const reason = prompt('Enter rejection reason:');
     if (!reason) return;
     try {
-      await axios.patch(`http://localhost:8080/appointments/${id}/reject?rejectionReason=${encodeURIComponent(reason)}`);
+      await axios.patch(`https://hospital-management-backend-a52a.onrender.com/appointments/${id}/reject?rejectionReason=${encodeURIComponent(reason)}`);
       fetchAppointments();
     } catch (error) {
       console.error('Error rejecting appointment:', error);
@@ -119,7 +119,7 @@ const AppointmentListPage = () => {
     }
 
     try {
-      await axios.post(`http://localhost:8080/appointments/${id}/reviews`, {
+      await axios.post(`https://hospital-management-backend-a52a.onrender.com/appointments/${id}/reviews`, {
         weekLabel: review.weekLabel,
         notes: review.notes
       });

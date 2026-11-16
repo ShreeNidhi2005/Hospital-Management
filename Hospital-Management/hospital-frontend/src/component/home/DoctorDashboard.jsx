@@ -17,7 +17,7 @@ const DoctorDashboard = () => {
 
   const fetchDoctors = useCallback(async () => {
     try {
-      await axios.get('http://localhost:8080/doctor/all');
+      await axios.get('https://hospital-management-backend-a52a.onrender.com/doctor/all');
     } catch (err) {
       console.error('Error fetching doctors:', err);
     }
@@ -38,7 +38,7 @@ const DoctorDashboard = () => {
   const handleAddDoctor = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:8080/doctor/add', newDoctor);
+      await axios.post('https://hospital-management-backend-a52a.onrender.com/doctor/add', newDoctor);
       setMessage('Doctor added successfully');
       setNewDoctor({
         name: '',

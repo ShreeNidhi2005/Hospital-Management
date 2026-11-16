@@ -17,7 +17,7 @@ const PatientAppointmentForm = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('http://localhost:8080/doctor/all')
+    axios.get('https://hospital-management-backend-a52a.onrender.com/doctor/all')
       .then((res) => {
         setDoctors(res.data);
       })
@@ -51,7 +51,7 @@ const PatientAppointmentForm = () => {
         status: 'PENDING'
       };
 
-      await axios.post('http://localhost:8080/appointments/create', appointmentData);
+      await axios.post('https://hospital-management-backend-a52a.onrender.com/appointments/create', appointmentData);
 
 
       setMessage('Appointment booked successfully!');

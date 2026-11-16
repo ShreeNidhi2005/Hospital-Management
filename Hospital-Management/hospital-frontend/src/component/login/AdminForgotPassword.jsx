@@ -11,7 +11,7 @@ const AdminForgotPassword = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post('http://localhost:8080/api/auth/forgot-password', {
+      const res = await axios.post('https://hospital-management-backend-a52a.onrender.com/api/auth/forgot-password', {
         email,
         newPassword
       });

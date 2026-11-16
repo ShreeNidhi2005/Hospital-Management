@@ -11,7 +11,7 @@ const PatientRecordByName = () => {
     setLoading(true);
     setNotFound(false);
     try {
-      const response = await axios.get(`http://localhost:8080/appointments/by-patient`, {
+      const response = await axios.get(`https://hospital-management-backend-a52a.onrender.com/appointments/by-patient`, {
         params: { patientName },
       });
       if (response.data.length > 0) {

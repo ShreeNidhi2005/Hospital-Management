@@ -19,7 +19,7 @@ const PatientRegistration = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:8080/hosp/register', formData);
+      await axios.post('https://hospital-management-backend-a52a.onrender.com/hosp/register', formData);
       setMessage('Registration successful!');
       setFormData({ username: '', dob: '' });
     } catch (error) {

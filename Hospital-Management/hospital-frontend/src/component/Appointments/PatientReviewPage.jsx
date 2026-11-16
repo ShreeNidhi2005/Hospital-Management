@@ -12,11 +12,11 @@ function PatientReviewPage() {
         const fetchAppointments = async () => {
             if (!patientName) return;
             try {
-                const res = await axios.get(`http://localhost:8080/appointments/by-patient?patientName=${patientName}`);
+                const res = await axios.get(`https://hospital-management-backend-a52a.onrender.com/appointments/by-patient?patientName=${patientName}`);
                 const appointmentsWithReviews = await Promise.all(
                     res.data.map(async (appointment) => {
                         try {
-                            const reviewsRes = await axios.get(`http://localhost:8080/appointments/${appointment.id}/reviews`);
+                            const reviewsRes = await axios.get(`https://hospital-management-backend-a52a.onrender.com/appointments/${appointment.id}/reviews`);
                             return { ...appointment, reviews: reviewsRes.data };
                         } catch {
                             return { ...appointment, reviews: [] };
